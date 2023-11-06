@@ -1,0 +1,36 @@
+{
+    "Header": {
+        "data_specs_version": "RAMIP 1.0.0", 
+        "cmor_version": "3.5", 
+        "table_id": "Table SImon", 
+        "realm": "seaIce", 
+        "table_date": "18 November 2020", 
+        "missing_value": "1e20", 
+        "int_missing_value": "-999", 
+        "product": "model-output", 
+        "approx_interval": "30.00000", 
+        "generic_levels": "", 
+        "mip_era": "RAMIP", 
+        "Conventions": "CF-1.7 CMIP-6.2"
+    },
+    "variable_entry": {
+        "siconc": {
+            "frequency": "mon", 
+            "modeling_realm": "seaIce", 
+            "standard_name": "sea_ice_area_fraction", 
+            "units": "%", 
+            "cell_methods": "area: mean where sea time: mean", 
+            "cell_measures": "area: areacello", 
+            "long_name": "Sea-Ice Area Percentage (Ocean Grid)", 
+            "comment": "Percentage of grid cell covered by sea ice", 
+            "dimensions": "longitude latitude time typesi", 
+            "out_name": "siconc", 
+            "type": "real", 
+            "positive": "", 
+            "valid_min": "", 
+            "valid_max": "", 
+            "ok_min_mean_abs": "", 
+            "ok_max_mean_abs": ""
+        } 
+    }
+}

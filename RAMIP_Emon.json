@@ -1,0 +1,36 @@
+{
+    "Header": {
+        "data_specs_version": "RAMIP 1.0.0", 
+        "cmor_version": "3.5", 
+        "table_id": "Table Emon", 
+        "realm": "land", 
+        "table_date": "18 November 2020", 
+        "missing_value": "1e20", 
+        "int_missing_value": "-999", 
+        "product": "model-output", 
+        "approx_interval": "30.00000", 
+        "generic_levels": "alevel olevel", 
+        "mip_era": "RAMIP", 
+        "Conventions": "CF-1.7 CMIP-6.2"
+    }, 
+    "variable_entry": {
+        "cldnvi": {
+            "frequency": "mon", 
+            "modeling_realm": "atmos", 
+            "standard_name": "atmosphere_number_content_of_cloud_droplets", 
+            "units": "m-2", 
+            "cell_methods": "area: time: mean", 
+            "cell_measures": "area: areacella", 
+            "long_name": "Column Integrated Cloud Droplet Number", 
+            "comment": "Droplets are liquid only.  Values are weighted by liquid cloud fraction in each layer when vertically integrating, and for monthly means the samples are weighted by total liquid cloud fraction (as seen from TOA).", 
+            "dimensions": "longitude latitude time", 
+            "out_name": "cldnvi", 
+            "type": "real", 
+            "positive": "", 
+            "valid_min": "", 
+            "valid_max": "", 
+            "ok_min_mean_abs": "", 
+            "ok_max_mean_abs": ""
+        }
+    }
+}

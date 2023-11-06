@@ -1,0 +1,72 @@
+{
+    "Header": {
+        "data_specs_version": "RAMIP 1.0.0", 
+        "cmor_version": "3.5", 
+        "table_id": "Table CFmon", 
+        "realm": "atmos", 
+        "table_date": "18 November 2020", 
+        "missing_value": "1e20", 
+        "int_missing_value": "-999", 
+        "product": "model-output", 
+        "approx_interval": "30.00000", 
+        "generic_levels": "alevel alevhalf", 
+        "mip_era": "RAMIP", 
+        "Conventions": "CF-1.7 CMIP-6.2"
+    }, 
+    "variable_entry": {
+        "clhcalipso": {
+            "frequency": "mon", 
+            "modeling_realm": "atmos", 
+            "standard_name": "cloud_area_fraction_in_atmosphere_layer", 
+            "units": "%", 
+            "cell_methods": "area: time: mean", 
+            "cell_measures": "area: areacella", 
+            "long_name": "CALIPSO High Level Cloud Area Percentage", 
+            "comment": "Percentage cloud cover in layer centred on 220hPa", 
+            "dimensions": "longitude latitude time p220", 
+            "out_name": "clhcalipso", 
+            "type": "real", 
+            "positive": "", 
+            "valid_min": "", 
+            "valid_max": "", 
+            "ok_min_mean_abs": "", 
+            "ok_max_mean_abs": ""
+        }, 
+        "cllcalipso": {
+            "frequency": "mon", 
+            "modeling_realm": "atmos", 
+            "standard_name": "cloud_area_fraction_in_atmosphere_layer", 
+            "units": "%", 
+            "cell_methods": "area: time: mean", 
+            "cell_measures": "area: areacella", 
+            "long_name": "CALIPSO Low Level Cloud Cover Percentage", 
+            "comment": "Percentage cloud cover in layer centred on 840hPa", 
+            "dimensions": "longitude latitude time p840", 
+            "out_name": "cllcalipso", 
+            "type": "real", 
+            "positive": "", 
+            "valid_min": "", 
+            "valid_max": "", 
+            "ok_min_mean_abs": "", 
+            "ok_max_mean_abs": ""
+        }, 
+        "clmcalipso": {
+            "frequency": "mon", 
+            "modeling_realm": "atmos", 
+            "standard_name": "cloud_area_fraction_in_atmosphere_layer", 
+            "units": "%", 
+            "cell_methods": "area: time: mean", 
+            "cell_measures": "area: areacella", 
+            "long_name": "CALIPSO Mid Level Cloud Cover Percentage", 
+            "comment": "Percentage cloud cover in layer centred on 560hPa", 
+            "dimensions": "longitude latitude time p560", 
+            "out_name": "clmcalipso", 
+            "type": "real", 
+            "positive": "", 
+            "valid_min": "", 
+            "valid_max": "", 
+            "ok_min_mean_abs": "", 
+            "ok_max_mean_abs": ""
+        }
+    }
+}
