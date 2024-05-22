@@ -17,7 +17,7 @@
 	"ccn02": {
 	    "frequency": "mon",
 	    "modeling_realm": "aerosol",
-	    "standard_name": "cloud_condensation_nuclei_concentration_at_0.2_percent_supersaturation",
+	    "standard_name": "cloud_condensation_nuclei_concentration_at_0point2_percent_supersaturation",
 	    "units": "cm-3",
 	    "cell_methods": "area: time: mean",
 	    "cell_measures": "area: areacella",
