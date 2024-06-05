@@ -56,6 +56,7 @@
             "CCCma":"Canadian Centre for Climate Modelling and Analysis, Environment and Climate Change Canada, Victoria, BC V8P 5C2, Canada",
             "CMCC":"Fondazione Centro Euro-Mediterraneo sui Cambiamenti Climatici, Lecce 73100, Italy",
             "CNRM-CERFACS":"CNRM (Centre National de Recherches Meteorologiques, Toulouse 31057, France), CERFACS (Centre Europeen de Recherche et de Formation Avancee en Calcul Scientifique, Toulouse 31057, France)",
+            "CP4C":"Collaborative Platform for the Canadian Earth System Model, in collaboration with Environment and Climate Change Canada. c/o Paul Kushner, Department of Physics, University of Toronto, 60 St. George St., Toronto, ON, M5S 1A7, Canada",
             "CSIR-Wits-CSIRO":"CSIR (Council for Scientific and Industrial Research - Natural Resources and the Environment, Pretoria, 0001, South Africa), Wits (University of the Witwatersrand - Global Change Institute, Johannesburg 2050, South Africa), CSIRO (Commonwealth Scientific and Industrial Research Organisation, Aspendale, Victoria 3195, Australia)Mailing address: Wits, Global Change Institute, Johannesburg 2050, South Africa",
             "CSIRO":"Commonwealth Scientific and Industrial Research Organisation, Aspendale, Victoria 3195, Australia",
             "CSIRO-ARCCSS":"CSIRO (Commonwealth Scientific and Industrial Research Organisation, Aspendale, Victoria 3195, Australia), ARCCSS (Australian Research Council Centre of Excellence for Climate System Science). Mailing address: CSIRO, c/o Simon J. Marsland, 107-121 Station Street, Aspendale, Victoria 3195, Australia",
@@ -99,7 +100,7 @@
             "UTAS":"Institute for Marine and Antarctic Studies, University of Tasmania, Hobart, Tasmania 7001, Australia",
             "UofT":"Department of Physics, University of Toronto, 60 St George Street, Toronto, ON M5S1A7, Canada"
         },
-        "source_id":{
+        "source_id":{f
             "4AOP-v1-5":{
                 "activity_participation":[
                     "RFMIP"
@@ -663,6 +664,7 @@
                     "OMIP",
                     "PAMIP",
                     "PMIP",
+                    "RAMIP",
                     "RFMIP",
                     "RFMIP",
                     "SIMIP",
@@ -964,6 +966,7 @@
                     "LS3MIP",
                     "LUMIP",
                     "OMIP",
+                    "RAMIP",
                     "RFMIP",
                     "ScenarioMIP"
                 ],
@@ -1053,6 +1056,49 @@
                 },
                 "source_id":"CanESM5",
                 "source":"CanESM5 (2019): \naerosol: interactive\natmos: CanAM5 (T63L49 native atmosphere, T63 Linear Gaussian Grid; 128 x 64 longitude/latitude; 49 levels; top level 1 hPa)\natmosChem: specified oxidants for aerosols\nland: CLASS3.6/CTEM1.2\nlandIce: specified ice sheets\nocean: NEMO3.4.1 (ORCA1 tripolar grid, 1 deg with refinement to 1/3 deg within 20 degrees of the equator; 361 x 290 longitude/latitude; 45 vertical levels; top grid cell 0-6.19 m)\nocnBgchem: Canadian Model of Ocean Carbon (CMOC); NPZD ecosystem with OMIP prescribed carbonate chemistry\nseaIce: LIM2"
+            },
+            CanESM5-1":{
+                "activity_participation":[
+                    "C4MIP",
+                    "CDRMIP",
+                    "CFMIP",
+                    "CMIP",
+                    "CORDEX",
+                    "DAMIP",
+                    "DCPP",
+                    "DynVarMIP",
+                    "FAFMIP",
+                    "GMMIP",
+                    "GeoMIP",
+                    "ISMIP6",
+                    "LS3MIP",
+                    "LUMIP",
+                    "OMIP",
+                    "PAMIP",
+                    "RAMIP",
+                    "RFMIP",
+                    "SIMIP",
+                    "ScenarioMIP",
+                    "VIACSAB",
+                    "VolMIP"
+                ],
+                "cohort":[
+                    "Published"
+                ],
+                "institution_id":[
+                    "CCCma",
+                    "CP4C"
+                ],
+                "license_info":{
+                    "exceptions_contact":"@ec.gc.ca <- f.cccma.info-info.ccmac.f",
+                    "history":"2022-12-02: initially published under CC BY 4.0",
+                    "id":"CC BY 4.0",
+                    "license":"Creative Commons Attribution 4.0 International (CC BY 4.0; https://creativecommons.org/licenses/by/4.0/)",
+                    "source_specific_info":"",
+                    "url":"https://creativecommons.org/licenses/by/4.0/"
+                },
+                "source_id":"CanESM5-1",
+                "source":"CanESM5.1 (2022): \naerosol: interactive\natmos: CanAM5.1 (T63L49 native atmosphere, T63 Linear Gaussian Grid; 128 x 64 longitude/latitude; 49 levels; top level 1 hPa)\natmosChem: specified oxidants for aerosols\nland: CLASS3.6/CTEM1.2\nlandIce: specified ice sheets\nocean: NEMO3.4.1 (ORCA1 tripolar grid, 1 deg with refinement to 1/3 deg within 20 degrees of the equator; 361 x 290 longitude/latitude; 45 vertical levels; top grid cell 0-6.19 m)\nocnBgchem: Canadian Model of Ocean Carbon (CMOC); NPZD ecosystem with OMIP prescribed carbonate chemistry\nseaIce: LIM2"
             },
             "CanESM5-CanOE":{
                 "activity_participation":[
@@ -1193,6 +1239,7 @@
                 "activity_participation":[
                     "AerChemMIP",
                     "CMIP",
+                    "RAMIP",
                     "RFMIP",
                     "ScenarioMIP"
                 ],
@@ -1843,6 +1890,7 @@
                     "OMIP",
                     "PAMIP",
                     "PMIP",
+                    "RAMIP",
                     "RFMIP",
                     "SIMIP",
                     "ScenarioMIP",
@@ -2748,6 +2796,7 @@
                     "LS3MIP",
                     "OMIP",
                     "PAMIP",
+                    "RAMIP",
                     "RFMIP",
                     "SIMIP",
                     "ScenarioMIP",
@@ -2951,6 +3000,7 @@
                     "LS3MIP",
                     "OMIP",
                     "PMIP",
+                    "RAMIP",
                     "RFMIP",
                     "SIMIP",
                     "ScenarioMIP",
@@ -3127,6 +3177,7 @@
                     "OMIP",
                     "PAMIP",
                     "PMIP",
+                    "RAMIP",
                     "RFMIP",
                     "ScenarioMIP",
                     "VolMIP"
