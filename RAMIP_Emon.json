@@ -31,6 +31,24 @@
             "valid_max": "", 
             "ok_min_mean_abs": "", 
             "ok_max_mean_abs": ""
-        }
+        },
+        "fFireNat": {
+            "frequency": "mon", 
+            "modeling_realm": "land", 
+            "standard_name": "surface_upward_mass_flux_of_carbon_dioxide_expressed_as_carbon_due_to_emission_from_natural_fires", 
+            "units": "kg m-2 s-1", 
+            "cell_methods": "area: mean where land time: mean", 
+            "cell_measures": "area: areacella", 
+            "long_name": "Carbon Mass Flux into Atmosphere Due to CO2 Emission from Natural Fire [kgC m-2 s-1]", 
+            "comment": "CO2 emissions from natural fires", 
+            "dimensions": "longitude latitude time", 
+            "out_name": "fFireNat", 
+            "type": "real", 
+            "positive": "", 
+            "valid_min": "", 
+            "valid_max": "", 
+            "ok_min_mean_abs": "", 
+            "ok_max_mean_abs": ""
+        } 
     }
 }
