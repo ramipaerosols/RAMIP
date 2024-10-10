@@ -3,6 +3,7 @@ __pycache__/
 *.py[cod]
 *$py.class
 .jupyter_ystore.db
+.virtual_documents
 
 # C extensions
 *.so
