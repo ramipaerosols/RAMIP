@@ -1,9 +1,10 @@
 import xarray as xr
+from colorama import Fore, Style
 from utils import find_different_datasets, get_check_msg, get_filename
 from test_variable_name import check_vars_same_name
 
 
-def check_units(ds1: xr.Dataset, ds2: xr.Dataset):
+def check_units(ds1: xr.Dataset, ds2: xr.Dataset, verbose=False):
     if not check_vars_same_name(ds1, ds2, False):
         if verbose: 
             print(Fore.CYAN + f"Check 4 Err Output: ")

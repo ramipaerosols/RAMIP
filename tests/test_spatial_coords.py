@@ -1,8 +1,10 @@
 import xarray as xr
+import numpy as np
+from colorama import Fore, Style
 from utils import find_different_datasets, get_check_msg, get_filename
 
 
-def check_spatial_coords(ds1: xr.Dataset, ds2: xr.Dataset):
+def check_spatial_coords(ds1: xr.Dataset, ds2: xr.Dataset, verbose=False):
     possible_spatial_dims = ["lat", "lon", "lev", "latitude", "longitude", "level"]
     spatial_dims_1 = [dim for dim in possible_spatial_dims if dim in ds1.dims]
     spatial_dims_2 = [dim for dim in possible_spatial_dims if dim in ds2.dims]
@@ -24,7 +26,7 @@ def check_spatial_coords(ds1: xr.Dataset, ds2: xr.Dataset):
         if not np.array_equal(ds1[dim].values, ds2[dim].values):
             if verbose: 
                 print(Fore.CYAN + f"Check 1 Err Output: ")
-                print(f"Comparing {get_filename(ds1)} and {get_filename(ds2}")
+                print(f"Comparing {get_filename(ds1)} and {get_filename(ds2)}")
                 print(f"The {dim} dimension does not have the same values. (It's possible that more dimensions also do not have the same values.) Here are the first 10 values that are different: "  + Style.RESET_ALL)
                 for index in np.where(ds1[dim].values != ds2[dim].values)[0][:10]:
                     print(f"{ds1[dim].values[index]} != {ds2[dim].values[index]} (index {index})")
@@ -34,9 +36,9 @@ def check_spatial_coords(ds1: xr.Dataset, ds2: xr.Dataset):
     return True
 
 
-def test_spatial_coords(datasets: list, verbose = False):
+def test_spatial_coords(datasets: list, verbose = False, checks = None):
     different_datasets = find_different_datasets(datasets, check_spatial_coords, verbose)
     msgs = ["Spatial coordinates are not equivalent across all datasets.", 
             "Spatial coordinates are equivalent across all datasets."]
-    print(get_check_msg(different_datasets, "Spatial Coord Check", msgs)) 
+    print(get_check_msg(different_datasets, "Spatial Coord Check", msgs, checks)) 
 

@@ -10,7 +10,7 @@ class Logger:
         self.__logs = []
 
     def log(self, msg):
-        self.__logs.append((str(datetime.now()), msg))
+        self.__logs.append(msg)
 
     def getLogs(self):
         return self.__logs
@@ -142,3 +142,28 @@ def get_check_msg(different_datasets: list, check_name: str, msgs: list, checks 
         check_msg = Fore.RED + f"{check_name}: {msgs[0]} The following datasets ({len(different_datasets)}/{different_datasets[0].count}) are different from the majority opinion: " + str(dataset_names) + "\n" + Style.RESET_ALL
 
     return check_msg
+
+def convert_paths(paths: list[str]) -> list[xarray.Dataset]:
+    """
+    Converts a list of file paths to a list of xarray Datasets. These paths 
+    can be either netCDF files or zarr stores.
+
+    Parameters
+    ----------
+    paths : list[str]
+        List of file paths to convert to xarray Datasets
+
+    Returns
+    -------
+    datasets : list[xarray.Dataset]
+        List of xarray Datasets
+    """
+    datasets = []
+    for path in paths:
+        if path.endswith(".nc"):
+            datasets.append(xarray.open_dataset(path))
+        elif path.endswith(".zarr"):
+            datasets.append(xarray.open_zarr(path))
+        else:
+            raise ValueError(f"File type not supported: {path}")
+    return datasets
