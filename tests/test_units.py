@@ -33,8 +33,8 @@ def check_units(ds1: xr.Dataset, ds2: xr.Dataset, verbose=False):
     return True
 
 
-def test_units(datasets: list, verbose = False, checks = None):
+def test_units(datasets: list, verbose = False, checks = None) -> str:
     different_datasets = find_different_datasets(datasets, check_units, verbose)
     msgs = ["Units are not equivalent across all datasets.", "Units are equivalent across all datasets."]
-    print(get_check_msg(different_datasets, "Units Check", msgs, checks)) 
+    get_check_msg(different_datasets, "Units Check", msgs, checks)
 
