@@ -3,7 +3,7 @@ from colorama import Fore, Style
 from utils import find_different_datasets, get_check_msg, get_filename
 
 
-def check_vars_same_name(ds1: xarray.Dataset, ds2: xarray.Dataset, verbose: bool) -> bool:
+def check_vars_same_name(ds1: xr.Dataset, ds2: xr.Dataset, verbose: bool) -> bool:
     # Check that the variables in the datasets have the same name
     
     vars_1 = list(ds1.data_vars.keys())
@@ -23,7 +23,7 @@ def check_vars_same_name(ds1: xarray.Dataset, ds2: xarray.Dataset, verbose: bool
     return True
 
 
-def test_units(datasets: list, verbose = False, checks = None) -> str:
+def test_variable_name(datasets: list, verbose = False, checks = None) -> str:
     different_datasets = find_different_datasets(datasets, check_vars_same_name, verbose)
     msgs = ["Variables do not have the same name across all datasets.", "Variables have the same name across all datasets."]
-    get_check_msg(different_datasets, "Var Name Check", msgs, checks)
+    return get_check_msg(different_datasets, "Var Name Check", msgs, checks)

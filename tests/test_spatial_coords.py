@@ -36,9 +36,9 @@ def check_spatial_coords(ds1: xr.Dataset, ds2: xr.Dataset, verbose=False):
     return True
 
 
-def test_spatial_coords(datasets: list, verbose = False, checks = None):
+def test_spatial_coords(datasets: list, verbose = False, checks = None) -> str:
     different_datasets = find_different_datasets(datasets, check_spatial_coords, verbose)
     msgs = ["Spatial coordinates are not equivalent across all datasets.", 
             "Spatial coordinates are equivalent across all datasets."]
-    print(get_check_msg(different_datasets, "Spatial Coord Check", msgs, checks)) 
+    return get_check_msg(different_datasets, "Spatial Coord Check", msgs, checks)
 
