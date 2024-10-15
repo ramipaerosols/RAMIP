@@ -32,7 +32,8 @@ def find_majority_ds(datasets: list[xarray.Dataset], check_equiv: Callable, verb
     Returns
     -------
     majority_ds : xarray.Dataset
-        Dataset that produces majority result from 'check_equiv'
+        Dataset that produces majority result from 'check_equiv'. Returns None 
+        if no majority is found.
     """
     majority_ds = None
     counter = 0
@@ -53,7 +54,7 @@ def find_majority_ds(datasets: list[xarray.Dataset], check_equiv: Callable, verb
     for ds in datasets:
         if check_equiv(majority_ds, ds, verbose):
             counter += 1
-    
+            
     if counter <= len(datasets) / 2:
         return None
 
@@ -82,7 +83,7 @@ def find_different_datasets(datasets: list[xarray.Dataset], check_equiv: Callabl
     # Find the datasets that are different from the majority dataset
     # It will return [-1] if no majority dataset is found
     majority_ds = find_majority_ds(datasets, check_equiv, verbose)
-    if majority_ds == None:
+    if majority_ds is None:
         return [None]
 
     different_datasets = []
@@ -110,7 +111,7 @@ def get_filename(ds: xarray.Dataset) -> str:
     return ds.encoding["source"].split("/")[-1]
 
 
-def get_check_msg(different_datasets: list, check_name: str, msgs: list, checks = None) -> str: 
+def get_check_msg(different_datasets: list, check_name: str, msgs: list, checks) -> str: 
     """
     Returns a standardized message for a passed check or a failed check. 
 
@@ -128,17 +129,17 @@ def get_check_msg(different_datasets: list, check_name: str, msgs: list, checks 
     """ 
 
     if different_datasets == [None]:
-        if checks: 
-            checks["check_name"] = False 
+        if checks is not None:
+            checks[check_name] = False 
         check_msg = Fore.RED + f"{check_name} failed: {msgs[0]} A majority of them are different from each other.\n" + Style.RESET_ALL
     elif len(different_datasets) == 0:
-        if checks: 
-            checks["check_name"] = True 
+        if checks is not None:
+            checks[check_name] = True 
         check_msg = Fore.GREEN + f"{check_name} passed: {msgs[1]}\n" + Style.RESET_ALL
     else: 
         dataset_names = [get_filename(ds) for ds in different_datasets]
-        if checks: 
-            checks["check_name"] = False 
+        if checks is not None:
+            checks[check_name] = False 
         check_msg = Fore.RED + f"{check_name}: {msgs[0]} The following datasets ({len(different_datasets)}/{different_datasets[0].count}) are different from the majority opinion: " + str(dataset_names) + "\n" + Style.RESET_ALL
 
     return check_msg
