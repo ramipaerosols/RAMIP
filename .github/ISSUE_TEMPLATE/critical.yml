@@ -1,6 +1,6 @@
 name: Critical Issue
 description: The underlying values of the dataset are biased, corrupted, or demonstrably incorrect.
-title: "[Critical]: "
+title: "[Critical Issue]: "
 labels: ["critical"]
 body:
   - type: markdown

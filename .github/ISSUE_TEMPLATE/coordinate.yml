@@ -1,6 +1,6 @@
 name: Coordinate Issue
 description: The coordinate variables for a dataset are incompatible with other datasets, improperly formatted, or corrupted, but the underlying variable data is unaffected.
-title: "[Coordinate]: "
+title: "[Coordinate Issue]: "
 labels: ["coordinate"]
 body:
   - type: markdown

@@ -1,6 +1,6 @@
 name: Post-Processing Issue
 description: The formatting of the dataset is inconvient or incompatible with other datasets, but the underlying variable data is unaffected.
-title: "[Post-Processing]: "
+title: "[Post-Processing Issue]: "
 labels: ["post-processing"]
 body:
   - type: markdown
