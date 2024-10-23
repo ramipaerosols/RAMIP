@@ -26,4 +26,4 @@ def check_vars_same_name(ds1: xr.Dataset, ds2: xr.Dataset, verbose: bool) -> boo
 def test_variable_name(datasets: list, verbose = False, checks = None) -> str:
     different_datasets = find_different_datasets(datasets, check_vars_same_name, verbose)
     msgs = ["Variables do not have the same name across all datasets.", "Variables have the same name across all datasets."]
-    return get_check_msg(different_datasets, "Var Name Check", msgs, checks)
+    return get_check_msg(different_datasets, "Var Name Check", msgs, checks, len(datasets))

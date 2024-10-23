@@ -111,7 +111,7 @@ def get_filename(ds: xarray.Dataset) -> str:
     return ds.encoding["source"].split("/")[-1]
 
 
-def get_check_msg(different_datasets: list, check_name: str, msgs: list, checks) -> str: 
+def get_check_msg(different_datasets: list, check_name: str, msgs: list, checks, total: int) -> str: 
     """
     Returns a standardized message for a passed check or a failed check. 
 
@@ -131,16 +131,19 @@ def get_check_msg(different_datasets: list, check_name: str, msgs: list, checks)
     if different_datasets == [None]:
         if checks is not None:
             checks[check_name] = False 
-        check_msg = Fore.RED + f"{check_name} failed: {msgs[0]} A majority of them are different from each other.\n" + Style.RESET_ALL
+        check_msg = Style.BRIGHT + Fore.RED + f"{check_name} failed: " + Style.RESET_ALL
+        check_msg += Fore.RED + f"{msgs[0]} A majority of them are different from each other.\n" + Style.RESET_ALL
     elif len(different_datasets) == 0:
         if checks is not None:
             checks[check_name] = True 
-        check_msg = Fore.GREEN + f"{check_name} passed: {msgs[1]}\n" + Style.RESET_ALL
+        check_msg = Style.BRIGHT + Fore.GREEN + f"{check_name} passed: " + Style.RESET_ALL
+        check_msg += Fore.GREEN + f"{msgs[1]}\n" + Style.RESET_ALL
     else: 
         dataset_names = [get_filename(ds) for ds in different_datasets]
         if checks is not None:
             checks[check_name] = False 
-        check_msg = Fore.RED + f"{check_name}: {msgs[0]} The following datasets ({len(different_datasets)}/{different_datasets[0].count}) are different from the majority opinion: " + str(dataset_names) + "\n" + Style.RESET_ALL
+        check_msg = Style.BRIGHT + Fore.RED + f"{check_name} failed: " + Style.RESET_ALL
+        check_msg += Fore.RED + f"{msgs[0]} The following datasets ({len(different_datasets)}/{total}) are different from the majority opinion: " + str(dataset_names) + "\n" + Style.RESET_ALL
 
     return check_msg
 
