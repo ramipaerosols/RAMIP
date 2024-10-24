@@ -60,22 +60,30 @@ body:
         - (Fixed-SST) piClim-370-NAE126aer
         - (Fixed-SST) piClim-370-SAS126aer
         - (Fixed-SST) piClim-370-126aer_nh3nox
+    validations:
+      required: true
   - type: textarea
     id: ensembles
     attributes:
       label: Ensemble Members
       description: Please indicate which ensemble members were impacted.
+    validations:
+      required: true
   - type: textarea
     id: logs
     attributes:
       label: Relevant log output
       description: Please copy and paste any relevant log output.
       render: shell
+    validations:
+      required: true
   - type: textarea
     id: commentary
     attributes:
       label: Details
       description: Please describe the issue in detail including how to reproduce it.
+    validations:
+      required: true
   - type: textarea
     id: solution
     attributes:
