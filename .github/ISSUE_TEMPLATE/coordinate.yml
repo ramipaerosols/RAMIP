@@ -60,23 +60,11 @@ body:
         - (Fixed-SST) piClim-370-NAE126aer
         - (Fixed-SST) piClim-370-SAS126aer
         - (Fixed-SST) piClim-370-126aer_nh3nox
-  - type: dropdown
+  - type: textarea
     id: ensembles
     attributes:
-      label: Which ensemble members were impacted?
-      multiple: true
-      options:
-        - All members
-        - r101i1p1f1
-        - r102i1p1f1
-        - r103i1p1f1
-        - r104i1p1f1
-        - r105i1p1f1
-        - r106i1p1f1
-        - r107i1p1f1
-        - r108i1p1f1
-        - r109i1p1f1
-        - r110i1p1f1
+      label: Ensemble Members
+      description: Please indicate which ensemble members were impacted.
   - type: textarea
     id: logs
     attributes:
