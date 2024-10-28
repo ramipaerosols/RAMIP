@@ -78,13 +78,12 @@ def find_different_datasets(datasets: list[xarray.Dataset], check_equiv: Callabl
     Returns
     -------
     different_datasets : list[xarray.Dataset]
-        List of datasets that are different from the majority result from 'check_equiv'
+        List of datasets that are different from the majority result from 'check_equiv'. 
+        Returns None if no majority dataset is found. 
     """
-    # Find the datasets that are different from the majority dataset
-    # It will return [-1] if no majority dataset is found
     majority_ds = find_majority_ds(datasets, check_equiv, verbose)
     if majority_ds is None:
-        return [None]
+        return None
 
     different_datasets = []
     for ds in datasets:
@@ -119,7 +118,7 @@ def get_check_msg(different_datasets: list, check_name: str, msgs: list, checks,
     ----------
     different_datasets: list[xarray.Dataset]
         List of xarray Datasets which failed the check because they were different from the majority. 
-        Will be [None] if there was no majority and most Datasets were different from each other. 
+        Will be None if there was no majority and most Datasets were different from each other. 
     check_name: str
         The name of this check 
     msgs: list[str]
@@ -128,7 +127,7 @@ def get_check_msg(different_datasets: list, check_name: str, msgs: list, checks,
         An optional Dictionary that maps the check name to whether or not it passed 
     """ 
 
-    if different_datasets == [None]:
+    if different_datasets is None:
         if checks is not None:
             checks[check_name] = False 
         check_msg = Style.BRIGHT + Fore.RED + f"{check_name} failed: " + Style.RESET_ALL
