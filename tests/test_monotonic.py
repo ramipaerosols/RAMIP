@@ -3,7 +3,7 @@ from utils import find_different_datasets, get_check_msg
 
 
 def check_monotonic(ds1: xr.Dataset, ds2: xr.Dataset, verbose = False):
-    return ds1.time.to_index().is_monotonic_increasing and ds2.time.to_index().is_monotonic_increasing
+    return ds1.time.to_index().is_monotonic_increasing and ds2.time.to_index().is_monotonic_increasing and ds1.time.to_index().is_unique and ds2.time.to_index().is_unique
 
 
 def test_monotonic(datasets: list, verbose = False, checks = None) -> str:

@@ -146,14 +146,14 @@ def get_check_msg(different_datasets: list, check_name: str, msgs: list, checks,
 
     return check_msg
 
-def convert_paths(paths: list[str]) -> list[xarray.Dataset]:
+def convert_paths(paths: list[str] | str) -> list[xarray.Dataset]:
     """
     Converts a list of file paths to a list of xarray Datasets. These paths 
     can be either netCDF files or zarr stores.
 
     Parameters
     ----------
-    paths : list[str]
+    paths : list[str] or str
         List of file paths to convert to xarray Datasets
 
     Returns
@@ -161,6 +161,8 @@ def convert_paths(paths: list[str]) -> list[xarray.Dataset]:
     datasets : list[xarray.Dataset]
         List of xarray Datasets
     """
+    if isinstance(paths, str):
+        paths = [paths]
     datasets = []
     for path in paths:
         if path.endswith(".nc"):

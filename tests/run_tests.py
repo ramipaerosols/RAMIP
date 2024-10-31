@@ -15,15 +15,21 @@ from test_units import test_units
 from test_variable_name import test_variable_name
 from test_spatial_coords import test_spatial_coords
 from utils import convert_paths, get_filename
+from show_single import show_single
 
 def check_model(paths: list[str], verbose: bool=False) -> None:
     run(paths, check_variable_name=False, check_units=False, verbose=verbose)
 
 
-def run(paths: list[str], check_monotonic: bool=True, check_calendar: bool=True, check_units: bool=True, 
-        check_variable_name: bool=True, check_spatial_coords: bool=True, verbose: bool=False) -> None:
+def run(paths: str | list[str], verbose: bool=False, check_monotonic: bool=True, check_calendar: bool=True, 
+        check_units: bool=True, check_variable_name: bool=True, check_spatial_coords: bool=True) -> None:
 
     datasets = convert_paths(paths)
+
+    if(isinstance(paths, str)):
+        show_single(datasets[0], verbose)
+        return 
+
     checks = {} # Dictionary to store the results of each check
     summary_msg = "" 
 
