@@ -1,7 +1,7 @@
 import xarray as xr
 import numpy as np
 from colorama import Fore, Style
-from utils import find_different_datasets, get_check_msg, get_filename
+from utils import find_different_datasets, get_consensus_check_msg, get_filename
 
 
 def check_spatial_coords(ds1: xr.Dataset, ds2: xr.Dataset, verbose=False):
@@ -40,5 +40,5 @@ def test_spatial_coords(datasets: list, verbose = False, checks = None) -> str:
     different_datasets = find_different_datasets(datasets, check_spatial_coords, verbose)
     msgs = ["Spatial coordinates are not equivalent across all datasets.", 
             "Spatial coordinates are equivalent across all datasets."]
-    return get_check_msg(different_datasets, "Spatial Coord Check", msgs, checks, len(datasets))
+    return get_consensus_check_msg(different_datasets, "Spatial Coord Check", msgs, checks, len(datasets))
 

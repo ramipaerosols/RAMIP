@@ -35,6 +35,7 @@ def run(paths: str | list[str], verbose: bool=False, check_monotonic: bool=True,
 
     if verbose:
         print(f"Checking {len(datasets)} datasets: {[get_filename(ds) for ds in datasets]}")
+        print("\n")
 
     datasets_with_time = [ds for ds in datasets if 'time' in ds.dims]
     if len(datasets) != len(datasets_with_time) and (check_monotonic or check_calendar):
