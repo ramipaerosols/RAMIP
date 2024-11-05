@@ -11,7 +11,7 @@ def check_vars_same_name(ds1: xr.Dataset, ds2: xr.Dataset, verbose: bool) -> boo
 
     if vars_1 != vars_2:
         if verbose: 
-            print(Fore.CYAN + f"Check 2 Err Output: ")
+            print(Fore.CYAN + f"Variable Name Check Err Output: ")
             print(f"Comparing {get_filename(ds1)} and {get_filename(ds2)}")
             print(f"The data variable names are NOT the same. Here are the names: "  + Style.RESET_ALL)
             print(vars_1)

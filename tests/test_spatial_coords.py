@@ -25,7 +25,7 @@ def check_spatial_coords(ds1: xr.Dataset, ds2: xr.Dataset, verbose=False):
     for dim in spatial_dims_1:
         if not np.array_equal(ds1[dim].values, ds2[dim].values):
             if verbose: 
-                print(Fore.CYAN + f"Check 1 Err Output: ")
+                print(Fore.CYAN + f"Spatial Coordinates Err Output: ")
                 print(f"Comparing {get_filename(ds1)} and {get_filename(ds2)}")
                 print(f"The {dim} dimension does not have the same values. (It's possible that more dimensions also do not have the same values.) Here are the first 10 values that are different: "  + Style.RESET_ALL)
                 for index in np.where(ds1[dim].values != ds2[dim].values)[0][:10]:

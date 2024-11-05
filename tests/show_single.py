@@ -83,16 +83,16 @@ def show_single(ds: xr.Dataset, verbose: bool=False):
         data_ = data_.weighted(weights)
         data_.mean(dim=spatial_dims).plot.pcolormesh(x='time', y=new_dim_name)
         plt.yticks(ticks=range(len(combination_coord_labels)), labels=combination_coord_labels)
-
     elif len(other_dimensions) == 1:
         data_weighted.mean(dim=spatial_dims).plot.pcolormesh(x='time', y=other_dimensions[0])
     else:
         print("Not enough dimensions for a color mesh plot.")
         # data.mean(dim=spatial_dims).plot.pcolormesh()
 
-    plt.suptitle(f"Mean over spatial dimensions")
-    plt.figtext(0.5, 0, f"Plot generated for {path}", horizontalalignment='center', fontsize=7) 
-    plt.show()
+    if len(other_dimensions) >= 1:
+        plt.suptitle(f"Mean over spatial dimensions")
+        plt.figtext(0.5, 0, f"Plot generated for {path}", horizontalalignment='center', fontsize=7) 
+        plt.show()
 
     # TASK 3
     other_dimensions = other_dimensions + ['time']
