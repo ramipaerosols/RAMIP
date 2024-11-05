@@ -1,6 +1,6 @@
 import xarray as xr
 from colorama import Fore, Style
-from utils import find_different_datasets, get_consensus_check_msg, get_filename
+from tests.utils import find_different_datasets, get_consensus_check_msg, get_filename
 
 
 def check_vars_same_name(ds1: xr.Dataset, ds2: xr.Dataset, verbose: bool) -> bool:

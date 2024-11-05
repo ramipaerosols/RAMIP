@@ -1,9 +1,8 @@
 import xarray as xr
-from utils import find_wrong_datasets, get_indiv_check_msg
+from tests.utils import find_wrong_datasets, get_indiv_check_msg, get_filename
 from datetime import timedelta
 import numpy as np
 from colorama import Fore, Style
-from utils import get_filename
 import collections
 
 def check_monotonic(ds1: xr.Dataset, verbose = False):

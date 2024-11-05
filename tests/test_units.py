@@ -1,7 +1,7 @@
 import xarray as xr
 from colorama import Fore, Style
-from utils import find_different_datasets, get_consensus_check_msg, get_filename
-from test_variable_name import check_vars_same_name
+from tests.utils import find_different_datasets, get_consensus_check_msg, get_filename
+from tests.test_variable_name import check_vars_same_name
 
 
 def check_units(ds1: xr.Dataset, ds2: xr.Dataset, verbose=False):

@@ -42,7 +42,7 @@ GitHub should automatically prompt what type of issue you want to submit and the
 
 
 ## Tests
-Python tests are available in `tests/` to be run on individual or multiple netCDF files. They do not catch all issues, but check for the most common ones. 
+Python tests are available in `tests/` to be run on individual or multiple netCDF files. They do not catch all issues, but check for the most common ones. Check out `tutorial.ipynb` for how to use it. 
 
 ## Credit
 

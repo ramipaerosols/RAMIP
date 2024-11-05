@@ -1,7 +1,7 @@
 import xarray as xr
 import numpy as np
 from colorama import Fore, Style
-from utils import find_different_datasets, get_consensus_check_msg, get_filename
+from tests.utils import find_different_datasets, get_consensus_check_msg, get_filename
 
 
 def check_spatial_coords(ds1: xr.Dataset, ds2: xr.Dataset, verbose=False):

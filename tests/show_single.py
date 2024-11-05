@@ -2,7 +2,7 @@ import xarray as xr
 import matplotlib.pyplot as plt
 import numpy as np
 import itertools
-from utils import get_filename
+from tests.utils import get_filename
 
 def show_single(ds: xr.Dataset, verbose: bool=False):
     """

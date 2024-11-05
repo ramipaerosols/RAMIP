@@ -1,5 +1,5 @@
 import xarray as xr
-from utils import find_different_datasets, get_consensus_check_msg, get_filename
+from tests.utils import find_different_datasets, get_consensus_check_msg, get_filename
 
 
 def check_calendar(ds1: xr.Dataset, ds2: xr.Dataset, verbose = False):
