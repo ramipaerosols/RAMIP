@@ -38,11 +38,11 @@ If you find an issue not documented in this repo, please add it. To do this, you
 
 ![Screenshot of new issue button.](images/issues_button.png)
 
-GitHub should automatically prompt what type of issue you want to submit and then autopopulate with a template we created specifically for RAMIP issues. Fill out the template as thoroughly as possible. This will ensure the issue you found is well-documented and easy for others to identify.
+GitHub should automatically prompt what type of issue you want to submit and then autopopulate with a template we created specifically for RAMIP issues. Fill out the template as thoroughly as possible. This will ensure the issue you found is well-documented and easy for others to identify. Note that GitHub currently does not support saving drafts of issues, so be careful not to lose any in-progress work.
 
 
 ## Tests
-Python tests are available in `tests/` to be run on individual or multiple netCDF files. They do not catch all issues, but check for the most common ones. 
+Python tests are available in `tests/` to be run on individual or multiple netCDF files. They do not catch all issues, but check for the most common ones. Check out `tutorial.ipynb` for how to use it. 
 
 ## Credit
 

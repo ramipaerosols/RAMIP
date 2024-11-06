@@ -64,7 +64,7 @@ def find_majority_ds(datasets: list[xarray.Dataset], check_equiv: Callable, verb
 def find_different_datasets(datasets: list[xarray.Dataset], check_equiv: Callable, verbose: bool) -> list:
     r"""
     Finds datasets that return a value from 'check_equiv' that is different
-    from the majority.
+    from the majority. Used for consensus checks. 
 
     Parameters
     ----------
@@ -78,13 +78,12 @@ def find_different_datasets(datasets: list[xarray.Dataset], check_equiv: Callabl
     Returns
     -------
     different_datasets : list[xarray.Dataset]
-        List of datasets that are different from the majority result from 'check_equiv'
+        List of datasets that are different from the majority result from 'check_equiv'. 
+        Returns None if no majority dataset is found. 
     """
-    # Find the datasets that are different from the majority dataset
-    # It will return [-1] if no majority dataset is found
     majority_ds = find_majority_ds(datasets, check_equiv, verbose)
     if majority_ds is None:
-        return [None]
+        return None
 
     different_datasets = []
     for ds in datasets:
@@ -92,6 +91,31 @@ def find_different_datasets(datasets: list[xarray.Dataset], check_equiv: Callabl
             different_datasets.append(ds)
 
     return different_datasets
+
+def find_wrong_datasets(datasets: list[xarray.Dataset], check: Callable, verbose: bool) -> list:
+    r"""
+    Finds datasets that are incorrect when check() is called on them. Used for individual integrity checks. 
+
+    Parameters
+    ----------
+    datasets : list[xarray.Dataset]
+        List of xarray Datasets to run 'check' on 
+    check : Callable
+        Function to run which returns true if the dataset passes the test and false otherwise.
+    verbose : bool
+        Whether or not to print full output.
+
+    Returns
+    -------
+    wrong_datasets : list[xarray.Dataset]
+        List of datasets that are do not pass the check(). 
+    """
+
+    wrong_datasets = []
+    for ds in datasets:
+        if not check(ds, verbose):
+            wrong_datasets.append(ds)
+    return wrong_datasets
 
 
 def get_filename(ds: xarray.Dataset) -> str:
@@ -111,24 +135,26 @@ def get_filename(ds: xarray.Dataset) -> str:
     return ds.encoding["source"].split("/")[-1]
 
 
-def get_check_msg(different_datasets: list, check_name: str, msgs: list, checks, total: int) -> str: 
+def get_consensus_check_msg(different_datasets: list[xarray.Dataset], check_name: str, msgs: list, checks, total: int) -> str: 
     """
-    Returns a standardized message for a passed check or a failed check. 
+    Returns a standardized message for a passed check or a failed check for consensus checks. 
 
     Parameters
     ----------
     different_datasets: list[xarray.Dataset]
         List of xarray Datasets which failed the check because they were different from the majority. 
-        Will be [None] if there was no majority and most Datasets were different from each other. 
+        Will be None if there was no majority and most Datasets were different from each other. 
     check_name: str
         The name of this check 
     msgs: list[str]
         msgs[0] is what should be said if the check failed. msgs[1] is what should be said if the check passed. 
     checks: Dict[str, bool] [optional, default=None]
         An optional Dictionary that maps the check name to whether or not it passed 
+    total: int 
+        The total number of datasets that were checked 
     """ 
 
-    if different_datasets == [None]:
+    if different_datasets is None:
         if checks is not None:
             checks[check_name] = False 
         check_msg = Style.BRIGHT + Fore.RED + f"{check_name} failed: " + Style.RESET_ALL
@@ -147,14 +173,46 @@ def get_check_msg(different_datasets: list, check_name: str, msgs: list, checks,
 
     return check_msg
 
-def convert_paths(paths: list[str]) -> list[xarray.Dataset]:
+def get_indiv_check_msg(wrong_datasets: list[xarray.Dataset], check_name: str, msgs: list, checks, total: int) -> str: 
+    """
+    Returns a standardized message for a passed check or a failed check for individual integrity checks. 
+
+    Parameters
+    ----------
+    wrong_datasets: list[xarray.Dataset]
+        List of xarray Datasets which failed the check. 
+    check_name: str
+        The name of this check 
+    msgs: list[str]
+        msgs[0] is what should be said if the check failed. msgs[1] is what should be said if the check passed. 
+    checks: Dict[str, bool] [optional, default=None]
+        An optional Dictionary that maps the check name to whether or not it passed 
+    total: int 
+        The total number of datasets that were checked 
+    """ 
+
+    if len(wrong_datasets) == 0:
+        if checks is not None:
+            checks[check_name] = True 
+        check_msg = Style.BRIGHT + Fore.GREEN + f"{check_name} passed: " + Style.RESET_ALL
+        check_msg += Fore.GREEN + f"{msgs[1]}\n" + Style.RESET_ALL
+    else:
+        dataset_names = [get_filename(ds) for ds in wrong_datasets]
+        if checks is not None:
+            checks[check_name] = False 
+        check_msg = Style.BRIGHT + Fore.RED + f"{check_name} failed: " + Style.RESET_ALL
+        check_msg += Fore.RED + f"{msgs[0]} The following datasets ({len(wrong_datasets)}/{total}) failed the check: " + str(dataset_names) + "\n" + Style.RESET_ALL
+
+    return check_msg
+
+def convert_paths(paths: list[str] | str) -> list[xarray.Dataset]:
     """
     Converts a list of file paths to a list of xarray Datasets. These paths 
     can be either netCDF files or zarr stores.
 
     Parameters
     ----------
-    paths : list[str]
+    paths : list[str] or str
         List of file paths to convert to xarray Datasets
 
     Returns
@@ -162,6 +220,8 @@ def convert_paths(paths: list[str]) -> list[xarray.Dataset]:
     datasets : list[xarray.Dataset]
         List of xarray Datasets
     """
+    if isinstance(paths, str):
+        paths = [paths]
     datasets = []
     for path in paths:
         if path.endswith(".nc"):
@@ -171,3 +231,4 @@ def convert_paths(paths: list[str]) -> list[xarray.Dataset]:
         else:
             raise ValueError(f"File type not supported: {path}")
     return datasets
+
