@@ -1,0 +1,10 @@
+name: Suggestion
+description: A suggestion on how to improve the RAMIP repository structure or workflow.
+title: "[Suggestion]: (INSERT TITLE HERE)"
+labels: ["suggestion"]
+body:
+  - type: textarea
+    id: solution
+    attributes:
+      label: Suggestion
+      description: How can we improve this repository?
