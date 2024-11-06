@@ -10,19 +10,19 @@ To view data issues currently present in RAMIP, click on the "Issues" tab of thi
 
 ![Screenshot of location of issues tab.](images/issues_tab.png)
 
-This should display a list of open issues with a search bar and labels selection as seen below:
+This will display a list of open issues with a search bar and labels selection as seen below:
 
 ![Screenshot of issues page.](images/issues_page.png)
 
 ## Issue Labels
 
-Issues are either "open", meaning that it is actively impacting RAMIP datasets, or "closed", meanging that it was resolved and does not impact RAMIP datasets. Based on our current framework, most issues will remain open even if the problematic datasets are fixed because many users likely already downloaded them. To distinguish between issues that are unresolved versus fixed, labels are assigned to each issue by the repository admins. Additional labels are used to indicate the scope of the issue:
+Issues are either "open", meaning that it is actively impacting RAMIP datasets, or "closed", meanging that it was resolved and does not impact RAMIP datasets. Based on our current framework, most issues will remain open even if the problematic datasets are fixed because many users likely already downloaded them. To distinguish between issues that are unresolved versus fixed, we instead use labels that are assigned to each issue by the repository admins. Additional labels are used to indicate the scope of the issue:
 
 ### Severity
 
-`post-processing` - The formatting of the dataset is inconvient or incompatible with other datasets, but the underlying variable data is unaffected.
+`post-processing` - The formatting of the dataset file is inconvenient or incompatible with other datasets, but the underlying data is unaffected.
 
-`coordinate` - The coordinate variables for a dataset are incompatible with other datasets, improperly formatted, or corrupted, but the underlying variable data is unaffected.
+`coordinate` - The coordinates for a dataset are incompatible with other datasets, improperly formatted, or corrupted, but the underlying variable data is unaffected.
 
 `critical` - The underlying values of the dataset are biased, corrupted, or demonstrably incorrect.
 
@@ -30,7 +30,9 @@ Issues are either "open", meaning that it is actively impacting RAMIP datasets, 
 
 `source-fixed` - The issue is fixed at the source. Future downloads will be unaffected by the issue.
 
-`patch-fixed` - The issue is fixed with additional post-processing or data handling. Future downloads will still have the issue.
+`post-process-fixed` - The issue is fixed with additional post-processing or data handling.
+
+`resolved` - The issue is fully resolved and does not require any post-processing or modifications to source data.
 
 ## Contributing an Issue
 
