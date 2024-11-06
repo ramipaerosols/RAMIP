@@ -27,9 +27,6 @@ def check_monotonic(ds1: xr.Dataset, verbose = False):
             duplicates = collections.defaultdict(list)
             for i, time in enumerate(ds1.time.to_index()):
                 duplicates[time].append(i)
-            # for k, v in sorted(duplicates.iteritems()):
-            #     if len(v) >= 2:
-            # get all duplicates where len(v) >= 2
             duplicates = [(k, v) for k, v in duplicates.items() if len(v) >= 2]
             if(len(duplicates) > 10):
                 print(Fore.CYAN + f"The time values for {get_filename(ds1)} dataset are not unique. Here are the first 10 time steps that are not unique: "  + Style.RESET_ALL)

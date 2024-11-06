@@ -9,8 +9,15 @@ def check_calendar(ds1: xr.Dataset, ds2: xr.Dataset, verbose = False):
         else:
             no_calendar_ds = get_filename(ds1) if 'calendar' not in ds1.time.encoding else get_filename(ds2)
             if verbose:
-                print(f"Dataset {no_calendar_ds} has no calendar attribute.")
+                print(Fore.CYAN + "Calendar Check Err Output: " + Style.RESET_ALL)
+                print(f"Dataset {no_calendar_ds} has no calendar attribute.\n")
             return False
+    
+    if verbose: 
+        if ds1.time.encoding['calendar'] != ds2.time.encoding['calendar']:
+            print(Fore.CYAN + "Calendar Check Err Output: ")
+            print(f"Comparing majority opinion {get_filename(ds1)} with {get_filename(ds2)}" + Style.RESET_ALL)
+            print(f"{ds1.time.encoding['calendar']} vs {ds2.time.encoding['calendar']}\n")
 
     return ds1.time.encoding['calendar'] == ds2.time.encoding['calendar']
 

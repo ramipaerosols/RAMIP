@@ -11,14 +11,22 @@ def check_spatial_coords(ds1: xr.Dataset, ds2: xr.Dataset, verbose=False):
 
     if spatial_dims_1 != spatial_dims_2:
         if verbose: 
-            print("Spatial dims are not the same")
+            print(Fore.CYAN + f"Spatial Coordinates Err Output: ")
+            print(f"Comparing majority opinion {get_filename(ds1)} with {get_filename(ds2)}")
+            print("The spatial dimensions are not the same." + Style.RESET_ALL)
+            print(f"Dataset 1 spatial dims: {spatial_dims_1}")
+            print(f"Dataset 2 spatial dims: {spatial_dims_2}\n")
         return False
     
     # Check that the spatial dims have the same shape
     for dim in spatial_dims_1:
         if ds1[dim].shape != ds2[dim].shape:
             if verbose: 
-                print("Spatial dims do not have the same shape")
+                print(Fore.CYAN + f"Spatial Coordinates Err Output: ")
+                print(f"Comparing majority opinion {get_filename(ds1)} with {get_filename(ds2)}")
+                print("The spatial dims do not have the same shape" + Style.RESET_ALL)
+                print("The shape of {dim} in dataset 1 is {ds1[dim].shape}")
+                print("The shape of {dim} in dataset 2 is {ds2[dim].shape}\n")
             return False
         
     # Check that the spatial dims have the same values
@@ -26,7 +34,7 @@ def check_spatial_coords(ds1: xr.Dataset, ds2: xr.Dataset, verbose=False):
         if not np.array_equal(ds1[dim].values, ds2[dim].values):
             if verbose: 
                 print(Fore.CYAN + f"Spatial Coordinates Err Output: ")
-                print(f"Comparing {get_filename(ds1)} and {get_filename(ds2)}")
+                print(f"Comparing majority opinion {get_filename(ds1)} with {get_filename(ds2)}")
                 print(f"The {dim} dimension does not have the same values. (It's possible that more dimensions also do not have the same values.) Here are the first 10 values that are different: "  + Style.RESET_ALL)
                 for index in np.where(ds1[dim].values != ds2[dim].values)[0][:10]:
                     print(f"{ds1[dim].values[index]} != {ds2[dim].values[index]} (index {index})")
