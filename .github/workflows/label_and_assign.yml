@@ -1,0 +1,16 @@
+name: "Set Issue Label and Assignee"
+on:
+  issues:
+    types: [opened]
+  pull_request:
+    typed: [opened]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: Naturalclar/issue-action@v2.0.2
+        with:
+          title-or-body: "both"
+          parameters: '[{"keywords": ["Model-UKESM"], "labels": ["UKESM"], "assignees": []}, {"keywords": ["Model-NorESM2"], "labels": ["NorESM2"], "assignees": []}, {"keywords": ["Model-GISS"], "labels": ["GISS"], "assignees": []}, {"keywords": ["Model-CESM2"], "labels": ["CESM2"], "assignees": []}, {"keywords": ["Model-MIROC-SPRINTARS"], "labels": ["MIROC-SPRINTARS"], "assignees": []}, {"keywords": ["Model-EC-Earth3"], "labels": ["EC-Earth3"], "assignees": []}, {"keywords": ["Model-CanESM5"], "labels": ["CanESM5"], "assignees": []}, {"keywords": ["Model-MRI-ESM2"], "labels": ["MRI-ESM2"], "assignees": []}]'
+          github-token: "${{ secrets.GITHUB_TOKEN }}"
