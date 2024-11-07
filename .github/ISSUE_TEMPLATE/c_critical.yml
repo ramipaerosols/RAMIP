@@ -22,15 +22,14 @@ body:
       multiple: true
       description: Which models were impacted?
       options:
-        - All models
-        - UKESM
-        - NorESM2
-        - GISS
-        - CESM2
-        - MIROC-SPRINTARS
-        - EC-Earth3
-        - CanESM5
-        - MRI-ESM2
+        - Model-UKESM
+        - Model-NorESM2
+        - Model-GISS
+        - Model-CESM2
+        - Model-MIROC-SPRINTARS
+        - Model-EC-Earth3
+        - Model-CanESM5
+        - Model-MRI-ESM2
     validations:
       required: true
   - type: dropdown
