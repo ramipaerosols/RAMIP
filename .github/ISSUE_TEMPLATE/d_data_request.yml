@@ -1,0 +1,69 @@
+name: Data Request
+description: Request data if it is missing or difficult to obtain.
+title: "[Data Availability]: (INSERT TITLE HERE)"
+labels: ["data-availability"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Request data if it is missing or difficult to obtain.
+  - type: textarea
+    id: summary
+    attributes:
+      label: Summary
+      description: In a few sentences, describe the issue.
+    validations:
+      required: true
+  - type: dropdown
+    id: models
+    attributes:
+      label: Models Impacted
+      multiple: true
+      description: Which models were impacted?
+      options:
+        - Model-UKESM
+        - Model-NorESM2
+        - Model-GISS
+        - Model-CESM2
+        - Model-MIROC-SPRINTARS
+        - Model-EC-Earth3
+        - Model-CanESM5
+        - Model-MRI-ESM2
+    validations:
+      required: true
+  - type: dropdown
+    id: experiments
+    attributes:
+      label: Which experiments were impacted?
+      multiple: true
+      options:
+        - All experiments
+        - All tier 1 transient experiments
+        - All tier 2 transient experiments
+        - All fixed-SST experiments
+        - (Tier 1) ssp370
+        - (Tier 1) ssp370-126aer
+        - (Tier 1) ssp370-AFR126aer
+        - (Tier 1) ssp370-EAS126aer
+        - (Tier 1) ssp370-NAE126aer
+        - (Tier 1) ssp370-SAS126aer
+        - (Tier 2) ssp370-ASIA126aer
+        - (Tier 2) ssp370-SAF126ca
+        - (Tier 2) ssp370-SAS126ca
+        - (Tier 2) ssp370-126aer_nh3nox
+        - (Fixed-SST) piClim-370
+        - (Fixed-SST) piClim-370-126aer
+        - (Fixed-SST) piClim-370-AFR126aer
+        - (Fixed-SST) piClim-370-EAS126aer
+        - (Fixed-SST) piClim-370-NAE126aer
+        - (Fixed-SST) piClim-370-SAS126aer
+        - (Fixed-SST) piClim-370-126aer_nh3nox
+    validations:
+      required: true
+  - type: textarea
+    id: ensembles
+    attributes:
+      label: Ensemble Members
+      description: Please indicate which ensemble members were impacted.
+    validations:
+      required: true
