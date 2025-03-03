@@ -1,6 +1,6 @@
 {
     "Header": {
-        "data_specs_version": "01.00.33", 
+        "data_specs_version": "RAMIP 1.0.0", 
         "cmor_version": "3.5", 
         "table_id": "Table Lmon", 
         "realm": "land", 
@@ -10,7 +10,7 @@
         "product": "model-output", 
         "approx_interval": "30.00000", 
         "generic_levels": "", 
-        "mip_era": "CMIP6", 
+        "mip_era": "RAMIP", 
         "Conventions": "CF-1.7 CMIP-6.2"
     }, 
     "variable_entry": {
